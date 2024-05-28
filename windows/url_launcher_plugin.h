@@ -33,7 +33,7 @@ class UrlLauncherPlugin : public flutter::Plugin, public UrlLauncherApi {
   UrlLauncherPlugin& operator=(const UrlLauncherPlugin&) = delete;
 
   // UrlLauncherApi:
-  ErrorOr<bool> CanLaunchUrl(const std::string& url) override;
+  ErrorOr<bool> CanLaunchUrl(const std::string& url, const TestBug* test_bug) override;
   ErrorOr<bool> LaunchUrl(const std::string& url) override;
 
  private:

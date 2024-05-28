@@ -78,7 +78,7 @@ UrlLauncherPlugin::UrlLauncherPlugin(std::unique_ptr<SystemApis> system_apis)
 
 UrlLauncherPlugin::~UrlLauncherPlugin() = default;
 
-ErrorOr<bool> UrlLauncherPlugin::CanLaunchUrl(const std::string& url) {
+ErrorOr<bool> UrlLauncherPlugin::CanLaunchUrl(const std::string& url, const TestBug* test_bug) {
   size_t separator_location = url.find(":");
   if (separator_location == std::string::npos) {
     return false;
