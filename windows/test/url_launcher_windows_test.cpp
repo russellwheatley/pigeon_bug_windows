@@ -57,7 +57,7 @@ TEST(UrlLauncherPlugin, CanLaunchSuccessTrue) {
   EXPECT_CALL(*system, RegCloseKey(fake_key)).WillOnce(Return(ERROR_SUCCESS));
 
   UrlLauncherPlugin plugin(std::move(system));
-  ErrorOr<bool> result = plugin.CanLaunchUrl("https://some.url.com");
+  ErrorOr<bool> result = plugin.CanLaunchUrl("https://some.url.com", nullptr);
 
   ASSERT_FALSE(result.has_error());
   EXPECT_TRUE(result.value());
@@ -75,7 +75,7 @@ TEST(UrlLauncherPlugin, CanLaunchQueryFailure) {
   EXPECT_CALL(*system, RegCloseKey(fake_key)).WillOnce(Return(ERROR_SUCCESS));
 
   UrlLauncherPlugin plugin(std::move(system));
-  ErrorOr<bool> result = plugin.CanLaunchUrl("https://some.url.com");
+  ErrorOr<bool> result = plugin.CanLaunchUrl("https://some.url.com", nullptr);
 
   ASSERT_FALSE(result.has_error());
   EXPECT_FALSE(result.value());
@@ -88,7 +88,7 @@ TEST(UrlLauncherPlugin, CanLaunchHandlesOpenFailure) {
   EXPECT_CALL(*system, RegOpenKeyExW).WillOnce(Return(ERROR_BAD_PATHNAME));
 
   UrlLauncherPlugin plugin(std::move(system));
-  ErrorOr<bool> result = plugin.CanLaunchUrl("https://some.url.com");
+  ErrorOr<bool> result = plugin.CanLaunchUrl("https://some.url.com", nullptr);
 
   ASSERT_FALSE(result.has_error());
   EXPECT_FALSE(result.value());
