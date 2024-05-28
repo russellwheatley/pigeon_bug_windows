@@ -74,6 +74,12 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              ElevatedButton(
+                  onPressed: () async {
+                    await UrlLauncherPlatform.instance
+                        .canLaunch('https://www.cylog.org/headers/');
+                  },
+                  child: const Text('press for bug')),
               const Padding(
                 padding: EdgeInsets.all(16.0),
                 child: Text(toLaunch),

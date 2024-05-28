@@ -27,7 +27,7 @@ class UrlLauncherWindows extends UrlLauncherPlatform {
 
   @override
   Future<bool> canLaunch(String url) {
-    return _hostApi.canLaunchUrl(url);
+    return _hostApi.canLaunchUrl(url, null);
   }
 
   @override
